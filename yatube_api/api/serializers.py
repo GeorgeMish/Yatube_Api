@@ -30,7 +30,7 @@ class FollowSerializer(serializers.ModelSerializer):
         validators = [
             UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
-                fields=('user', 'following'),
+                fields=('user', 'following', ),
                 message='Вы уже подписаны'
             )
         ]
@@ -38,7 +38,7 @@ class FollowSerializer(serializers.ModelSerializer):
 
 class GroupSerializers(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'title', 'slug', 'description')
+        fields = '__all__'
         model = Group
 
 
@@ -49,7 +49,7 @@ class PostSerializers(serializers.ModelSerializer):
     )
 
     class Meta:
-        fields = ('id', 'text', 'author', 'image', 'group', 'pub_date')
+        fields = '__all__'
         model = Post
 
 
@@ -57,6 +57,6 @@ class CommentSerializers(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
 
     class Meta:
-        fields = ('id', 'author', 'post', 'text', 'text', 'created')
+        fields = '__all__'
         model = Comment
         read_only_fields = ('post',)
