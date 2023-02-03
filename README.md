@@ -42,6 +42,19 @@ python3 -m pip install --upgrade pip
 ```
 pip install -r requirements.txt
 ```
+Создать файл .env в директории yatube_api/yatube_api, внести собственный ключ в строку:
+
+```
+SECRET_KEY='ea!3v6eqt5(x=*********************p5&glq*81^1@s6$e'
+```
+
+Если ключа нет, сгенерировать:
+
+```
+from django.core.management.utils import get_random_secret_key
+print(get_random_secret_key())
+exit()
+```
 
 Выполнить миграции:
 
